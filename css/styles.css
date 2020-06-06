@@ -1,0 +1,17 @@
+body {
+  padding-top: 5vh;
+}
+
+#hot-seat img {
+  width: 300px;
+  height: auto;
+}
+
+#members-list img {
+  margin: 4px;
+  border: 3px solid transparent;
+}
+
+#members-list img.active {
+  border-color: green;
+}

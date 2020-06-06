@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NU HotSeat</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    
+  <div class="container center-align">
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="question" type="text" class="validate">
+        <label for="question">Question</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <div id="hot-seat">
+          <img src="img/placeholder.png" alt="Hot seat image" />
+          <h1>Who's in the hotseat?</h1>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <a id="randomize" class="waves-effect waves-light btn-large"><i class="material-icons left">sync</i> RANDOMIZE</a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div id="members-list" class="col s12"></div>
+    </div>
+  </div><!-- .container -->
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="js/keys.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
