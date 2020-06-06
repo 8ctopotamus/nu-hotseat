@@ -1,26 +1,61 @@
 $(document).ready(function() {
+  var intervalId;
+  var members = [];
+  var activeMember;
+  var slackUsersEndpoint = "https://slack.com/api/users.list?token=" + token;
+  var excludedIds = ['USLACKBOT', 'U012640HMM1', "U012FEF25QR"];
+  var $loading = $('#loading');
   var $randomizeBtn = $('#randomize');
   var $membersList = $('#members-list');
   var $hotseatImg = $('#hot-seat img');
   var $hotseatHeading = $('#hot-seat h1');
-  var slackUsersEndpoint = "https://slack.com/api/users.list?token=" + token;
-  var intervalId;
-  var members = [];
-  var excludedIds = ['USLACKBOT', 'U012640HMM1', "U012FEF25QR"];
+  var defaultImg = $hotseatImg.attr('src');
+  var defaultHeading = $hotseatHeading.text();
+  var $questionInput = $('#question');
+  var $questionText = $('#question-text');
+  var $correctBtn = $('#correct');
+  var $incorrectBtn = $('#incorrect');
 
-  function updateUI(member) {
-    $hotseatImg.attr('src', member.profile.image_512);
-    $hotseatHeading.text(member.profile.real_name);
+  function resetHotseat() {
+    activeMember = null;
+    $hotseatImg.attr('src', defaultImg);
+    $hotseatHeading.text(defaultHeading);    
+  }
+
+  function removeMember(id) {
+    var foundIndex = members.findIndex(function(member) {
+      return id === member.id;
+    });
+    members.splice(foundIndex, 1);
+    $('[data-id=' + id + ']').remove(); 
+  }
+
+  function handleCorrect() {
+    removeMember(activeMember.id);
+    resetHotseat();
+  }
+
+  function handleInputChange() {
+    var val = $(this).val();
+    $questionText.text(val);
+  }
+
+  function updateUI() {
+    $hotseatImg.attr('src', activeMember.profile.image_512);
+    $hotseatHeading.text(activeMember.profile.real_name);
     $membersList.find('img').removeClass('active');
-    $('[data-id=' + member.id + ']').addClass('active');
+    $('[data-id=' + activeMember.id + ']').addClass('active');
   }
 
   function randomize() {
     var count = 0;
+    $correctBtn.removeClass('hidden');
+    $incorrectBtn.removeClass('hidden');
     clearInterval(intervalId);
     intervalId = setInterval(function() {
       var random = (Math.floor(Math.random() * members.length));
-      updateUI(members[random])
+      activeMember = members[random];
+      updateUI()
       if (count === 10) {
         clearInterval(intervalId);
       }
@@ -43,12 +78,17 @@ $(document).ready(function() {
     members = response.members.filter(function(member) {
       return !member.is_bot && !excludedIds.includes(member.id);
     });
-    console.log(members)
+    $loading.hide();
     renderMembers();
   }).catch(function(error) {
     console.log(error);
   });
 
-  $randomizeBtn.on('click', randomize)
-
+  $randomizeBtn.on('click', randomize);
+  $questionInput.on('change keyup', handleInputChange);
+  $correctBtn.on('click', handleCorrect);
+  $incorrectBtn.on('click', resetHotseat);
+  $membersList.on('click', 'img', function() {
+    removeMember($(this).attr('data-id'));
+  });
 });
