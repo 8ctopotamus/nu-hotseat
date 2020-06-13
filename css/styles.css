@@ -37,10 +37,11 @@ input {
 #members-list img {
   margin: 4px;
   border: 4px solid transparent;
+  border-radius: 18px;
 }
 
 #members-list img.active {
-  border-color: #A0DDFF;
+  border-color: #00FFE7;
 }
 
 #question-text {
