@@ -1,9 +1,9 @@
 $(document).ready(function() {
+  var excludedIds = ['USLACKBOT', 'U012640HMM1', "U012FEF25QR", "U012WLGC67N", "U011ZBEK5GE", "U013250CWJU","U01263L630A"];
   var intervalId;
   var members = [];
   var activeMember;
   var slackUsersEndpoint = "https://slack.com/api/users.list?token=" + token;
-  var excludedIds = ['USLACKBOT', 'U012640HMM1', "U012FEF25QR"];
   var $loading = $('#loading');
   var $randomizeBtn = $('#randomize');
   var $membersList = $('#members-list');
@@ -78,6 +78,9 @@ $(document).ready(function() {
     members = response.members.filter(function(member) {
       return !member.is_bot && !excludedIds.includes(member.id);
     });
+
+    console.log(members)
+
     $loading.hide();
     renderMembers();
   }).catch(function(error) {
