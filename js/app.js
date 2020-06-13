@@ -8,7 +8,7 @@ $(document).ready(function() {
   var $randomizeBtn = $('#randomize');
   var $membersList = $('#members-list');
   var $hotseatImg = $('#hot-seat img');
-  var $hotseatHeading = $('#hot-seat h1');
+  var $hotseatHeading = $('#hot-seat h2');
   var defaultImg = $hotseatImg.attr('src');
   var defaultHeading = $hotseatHeading.text();
   var $questionInput = $('#question');
