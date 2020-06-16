@@ -13,7 +13,7 @@ body {
   color: white;
   padding-top: 5vh;
   /* background-image: radial-gradient(#CE2D4F, #6135c2); */
-  background-image: radial-gradient(blue, yellow);
+  background-image: radial-gradient(blue, green);
 }
 
 input {
@@ -42,11 +42,11 @@ input {
 }
 
 #members-list img.active {
-  border-color: #00FFE7;
+  border-color: #ff252c;
 }
 
 #question-text {
-  color: white;
+  color: #ffffff;
 }
 
 .spinner {
@@ -58,7 +58,7 @@ input {
 .spinner > div {
   width: 18px;
   height: 18px;
-  background-color: white;
+  background-color: #ffceed;
 
   border-radius: 100%;
   display: inline-block;
@@ -82,10 +82,10 @@ input {
 }
 
 @keyframes sk-bouncedelay {
-  0%, 80%, 100% { 
+  0%, 80%, 100% {
     -webkit-transform: scale(0);
     transform: scale(0);
-  } 40% { 
+  } 40% {
     -webkit-transform: scale(1.0);
     transform: scale(1.0);
   }
