@@ -12,10 +12,7 @@
 body {
   color: white;
   padding-top: 5vh;
-  /* background-image: radial-gradient(#CE2D4F, #6135c2); */
-
-  background-image: radial-gradient(blue, green);
-
+  background-image: radial-gradient(#CE2D4F, #6135c2);
 }
 
 input {
