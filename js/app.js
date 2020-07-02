@@ -3,7 +3,7 @@ $(document).ready(function() {
   var intervalId;
   var members = [];
   var activeMember;
-  var token = 'YOUR_SLACK_API_TOKEN';
+  var token = 'xoxp-1071075123139-1067388651558-1192691003616-ed340531ae8e2d3b4aca20503b79b44f'
   var slackUsersEndpoint = "https://slack.com/api/users.list?token=" + token;
   var $loading = $('#loading');
   var $randomizeBtn = $('#randomize');
