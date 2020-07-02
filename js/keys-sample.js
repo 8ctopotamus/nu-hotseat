@@ -1,1 +1,0 @@
-var token = "YOUR_SLACK_TOKEN_HERE"
